@@ -1,26 +1,43 @@
-'use client';
-import createUser,{getUser} from "./action";
+// 'use client';
+// import createUser,{getUser} from "./action";
 
-export default function Home() {
-  async function submit(){
-    // console.log("buttonpress");
-    await createUser();
-  }
-  async function gettinguser(){
-    const user = await getUser();
-    console.log(user);
-  }
+// export default function Home() {
+//   async function submit(){
+//     // console.log("buttonpress");
+//     await createUser();
+//   }
+//   async function gettinguser(){
+//     const user = await getUser();
+//     console.log(user);
+//   }
+//   return (
+//     <>
+//     <button onClick={submit}>add in db</button>
+//     <br/>
+//     <button onClick={gettinguser}>get user</button>
+//     </>
+//      );
+// }
+
+
+import { getproduct } from './create/actions';
+
+export default async function HomePage() {
+  const users = await getproduct(); 
+
   return (
-    <>
-    <button onClick={submit}>add in db</button>
-    <br/>
-    <button onClick={gettinguser}>get user</button>
-    </>
-     );
+    <div className="mt-6">
+      <h2 className="text-lg font-semibold text-white-700 ">Added products:</h2>
+      <ul className="mt-2 space-y-2">
+        {users.map((product) => (
+          <li key={product.id} className="p-2 border rounded">
+         {product.name}  {product.price}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
-
-
-
 
 
 

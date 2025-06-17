@@ -4,6 +4,7 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,9 +15,9 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model user{
-  id  String @id @default(cuid())
-  name String
-  phone String
-  age String
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  price       String
+  createdAt   DateTime @default(now())
 }
